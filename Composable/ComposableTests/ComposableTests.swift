@@ -1,14 +1,14 @@
 //
-//  ComposableArchitectureTests.swift
-//  ComposableArchitectureTests
+//  ComposableTests.swift
+//  ComposableTests
 //
 //  Created by Евгений Суханов on 19.10.2020.
 //
 
 import XCTest
-@testable import ComposableArchitecture
+@testable import Composable
 
-class ComposableArchitectureTests: XCTestCase {
+class ComposableTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ComposableArchitecture/ComposableArchitecture.xcodeproj">
+      location = "group:Composable/Composable.xcodeproj">
    </FileRef>
 </Workspace>
