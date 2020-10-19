@@ -76,6 +76,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5231FA32253D7ED10055A0E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				523B68BE253D740B001A0C72 /* LaunchScreen.storyboard */,
+				523B68B9253D740B001A0C72 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5231FA33253D7EE10055A0E2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				523B68B3253D7408001A0C72 /* AppDelegate.swift */,
+				523B68B5253D7408001A0C72 /* SceneDelegate.swift */,
+				523B68C1253D740B001A0C72 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		523B68A7253D7408001A0C72 = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +118,9 @@
 		523B68B2253D7408001A0C72 /* ComposableArchitecture */ = {
 			isa = PBXGroup;
 			children = (
-				523B68B3253D7408001A0C72 /* AppDelegate.swift */,
-				523B68B5253D7408001A0C72 /* SceneDelegate.swift */,
+				5231FA33253D7EE10055A0E2 /* App */,
+				5231FA32253D7ED10055A0E2 /* Resources */,
 				523B68B7253D7408001A0C72 /* ContentView.swift */,
-				523B68B9253D740B001A0C72 /* Assets.xcassets */,
-				523B68BE253D740B001A0C72 /* LaunchScreen.storyboard */,
-				523B68C1253D740B001A0C72 /* Info.plist */,
 				523B68BB253D740B001A0C72 /* Preview Content */,
 			);
 			path = ComposableArchitecture;
@@ -437,9 +453,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"ComposableArchitecture/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "ComposableArchitecture/Preview\\ Content ComposableArchitecture/Resources/Assets.xcassets";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = ComposableArchitecture/Info.plist;
+				INFOPLIST_FILE = ComposableArchitecture/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,9 +473,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"ComposableArchitecture/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "ComposableArchitecture/Preview\\ Content ComposableArchitecture/Resources/Assets.xcassets";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = ComposableArchitecture/Info.plist;
+				INFOPLIST_FILE = ComposableArchitecture/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
