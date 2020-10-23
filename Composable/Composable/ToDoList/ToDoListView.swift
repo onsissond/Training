@@ -19,17 +19,9 @@ struct ToDoListView: View {
                     store.scope(
                         state: \.todos,
                         action: ToDoListAction.todoAction
-                    )
-                ) { toDoStore in
-                    WithViewStore(toDoStore) { viewStore in
-                        HStack {
-                            Button(action: { viewStore.send(.toggleStatus) }) {
-                                Image(systemName: viewStore.isCompleted ? "checkmark.square" : "square")
-                            }.buttonStyle(PlainButtonStyle())
-                            TextField("Enter todo", text: .constant(viewStore.title))
-                        }
-                    }
-                }
+                    ),
+                    content: ToDoView.init
+                )
             }.navigationTitle("My todo")
         }
     }
@@ -37,16 +29,6 @@ struct ToDoListView: View {
 
 struct ToDoListView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoListView(store: Store<ToDoListState, ToDoListAction>(
-            initialState: ToDoListState(
-                todos: [
-                    ToDo(id: UUID(), title: "Learn Swift", isCompleted: true),
-                    ToDo(id: UUID(), title: "Read book"),
-                    ToDo(id: UUID(), title: "Visit doctor")
-                ]
-            ),
-            reducer: toDoListReducer,
-            environment: ToDoListEnviroment()
-        ))
+        ToDoListView(store: .mock)
     }
 }
