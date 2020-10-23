@@ -19,16 +19,30 @@ struct ToDoListState: Equatable {
 }
 
 enum ToDoListAction {
-    case toggleStatus(Int)
+    case todoAction(Int, ToDoAction)
 }
 
 struct ToDoListEnviroment {
 }
 
-let toDoListReducer = Reducer<ToDoListState, ToDoListAction, ToDoListEnviroment> { state, action, env in
+let toDoListReducer: Reducer<ToDoListState, ToDoListAction, ToDoListEnviroment> = toDoReducer.forEach(
+    state: \ToDoListState.todos,
+    action: /ToDoListAction.todoAction,
+    environment: { _ in ToDoEnviroment() }
+)
+
+// MARK: - TODO
+enum ToDoAction {
+    case toggleStatus
+}
+
+struct ToDoEnviroment {
+}
+
+let toDoReducer = Reducer<ToDo, ToDoAction, ToDoEnviroment> { state, action, env in
     switch action {
-    case .toggleStatus(let index):
-        state.todos[index].isCompleted.toggle()
+    case .toggleStatus:
+        state.isCompleted.toggle()
     }
     return .none
 }

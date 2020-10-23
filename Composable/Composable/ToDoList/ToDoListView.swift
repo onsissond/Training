@@ -7,24 +7,30 @@
 
 import SwiftUI
 import ComposableArchitecture
+import CasePaths
 
 struct ToDoListView: View {
     let store: Store<ToDoListState, ToDoListAction>
 
     var body: some View {
         NavigationView {
-            WithViewStore(store) { viewStore in
-                List {
-                    ForEach(Array(viewStore.todos.enumerated()), id: \.element.id) { index, todo in
-                        HStack() {
-                            Button(action: { viewStore.send(.toggleStatus(index)) }) {
-                                Image(systemName: todo.isCompleted ? "checkmark.square" : "square")
+            List {
+                ForEachStore(
+                    store.scope(
+                        state: \.todos,
+                        action: ToDoListAction.todoAction
+                    )
+                ) { toDoStore in
+                    WithViewStore(toDoStore) { viewStore in
+                        HStack {
+                            Button(action: { viewStore.send(.toggleStatus) }) {
+                                Image(systemName: viewStore.isCompleted ? "checkmark.square" : "square")
                             }.buttonStyle(PlainButtonStyle())
-                            TextField("Enter todo", text: .constant(todo.title))
+                            TextField("Enter todo", text: .constant(viewStore.title))
                         }
                     }
-                }.navigationTitle("My todo")
-            }
+                }
+            }.navigationTitle("My todo")
         }
     }
 }
