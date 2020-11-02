@@ -27,3 +27,14 @@ let toDoReducer = Reducer<ToDo, ToDoAction, ToDoEnviroment> { state, action, env
     }
     return .none
 }
+
+typealias ToDoStore = Store<ToDo, ToDoAction>
+extension ToDoStore {
+    static var mock: ToDoStore {
+        ToDoStore(
+            initialState: ToDo(id: UUID(), title: "Learn Swift", isCompleted: true),
+            reducer: toDoReducer,
+            environment: ToDoEnviroment()
+        )
+    }
+}

@@ -10,19 +10,28 @@ import ComposableArchitecture
 import CasePaths
 
 struct ToDoListView: View {
-    let store: Store<ToDoListState, ToDoListAction>
+    let store: ToDoListStore
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEachStore(
-                    store.scope(
-                        state: \.todos,
-                        action: ToDoListAction.todoAction
-                    ),
-                    content: ToDoView.init
+        WithViewStore(store) { viewStore in
+            NavigationView {
+                List {
+                    ForEachStore(
+                        store.scope(
+                            state: \.todos,
+                            action: ToDoListAction.todoAction
+                        ),
+                        content: ToDoView.init
+                    )
+                    .listRowBackground(Color.clear)
+                }
+                .navigationTitle("My todo")
+                .navigationBarItems(
+                    trailing: Button("Add Todo") {
+                        viewStore.send(.addToDo)
+                    }
                 )
-            }.navigationTitle("My todo")
+            }
         }
     }
 }

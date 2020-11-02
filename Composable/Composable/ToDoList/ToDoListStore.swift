@@ -14,20 +14,32 @@ struct ToDoListState: Equatable {
 
 enum ToDoListAction {
     case todoAction(Int, ToDoAction)
+    case addToDo
 }
 
 struct ToDoListEnviroment {}
 
-let toDoListReducer: Reducer<ToDoListState, ToDoListAction, ToDoListEnviroment> = toDoReducer.forEach(
+let toDoListReducer: Reducer<ToDoListState, ToDoListAction, ToDoListEnviroment> = .combine(
+    toDoReducer.forEach(
     state: \.todos,
     action: /ToDoListAction.todoAction,
     environment: { _ in ToDoEnviroment() }
+    ),
+    Reducer { state, action, env in
+        switch action {
+        case .addToDo:
+            state.todos.insert(ToDo(id: UUID(), title: "", isCompleted: true), at: 0)
+            return .none
+        case .todoAction:
+            return .none
+        }
+    }
 )
 
 typealias ToDoListStore = Store<ToDoListState, ToDoListAction>
 extension ToDoListStore {
     static var mock: ToDoListStore {
-        Store<ToDoListState, ToDoListAction>(
+        ToDoListStore(
             initialState: ToDoListState(
                 todos: [
                     ToDo(id: UUID(), title: "Learn Swift", isCompleted: true),

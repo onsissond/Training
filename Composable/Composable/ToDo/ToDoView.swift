@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ToDoView: View {
-    let store: Store<ToDo, ToDoAction>
+    let store: ToDoStore
 
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -20,5 +20,11 @@ struct ToDoView: View {
                 TextField("Enter todo", text: .constant(viewStore.title))
             }
         }
+    }
+}
+
+struct ToDoView_Previews: PreviewProvider {
+    static var previews: some View {
+        ToDoView(store: .mock)
     }
 }
