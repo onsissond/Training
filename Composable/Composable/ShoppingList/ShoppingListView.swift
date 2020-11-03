@@ -1,5 +1,5 @@
 //
-//  ToDoListView.swift
+//  ShoppingListView.swift
 //  ComposableArchitecture
 //
 //  Created by Евгений Суханов on 19.10.2020.
@@ -9,8 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 import CasePaths
 
-struct ToDoListView: View {
-    let store: ToDoListStore
+struct ShoppingListView: View {
+    let store: ShoppingListStore
 
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -18,16 +18,16 @@ struct ToDoListView: View {
                 List {
                     ForEachStore(
                         store.scope(
-                            state: \.todos,
-                            action: ToDoListAction.todoAction
+                            state: \.products,
+                            action: ShoppingListAction.productAction
                         ),
-                        content: ToDoView.init
+                        content: ProductView.init
                     )
                 }
                 .navigationTitle("Shopping list")
                 .navigationBarItems(
                     trailing: Button("Add item") {
-                        viewStore.send(.addToDo)
+                        viewStore.send(.addProduct)
                     }
                 )
             }
@@ -36,8 +36,8 @@ struct ToDoListView: View {
     }
 }
 
-struct ToDoListView_Previews: PreviewProvider {
+struct ShoppingListView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoListView(store: .mock)
+        ShoppingListView(store: .mock)
     }
 }

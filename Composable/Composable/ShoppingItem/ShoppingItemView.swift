@@ -1,5 +1,5 @@
 //
-//  ToDoView.swift
+//  ShoppingItemView.swift
 //  Composable
 //
 //  Created by Евгений Суханов on 23.10.2020.
@@ -8,33 +8,35 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ToDoView: View {
-    let store: ToDoStore
+struct ProductView: View {
+    let store: ProductStore
 
     var body: some View {
         WithViewStore(store) { viewStore in
             HStack {
                 Button(action: { viewStore.send(.toggleStatus) }) {
                     Image(
-                        systemName: viewStore.isCompleted
+                        systemName: viewStore.isInBox
                             ? "checkmark.square"
                             : "square"
                     )
                 }
                 .buttonStyle(PlainButtonStyle())
-
                 TextField(
                     "New item",
-                    text: viewStore.binding(get: \.title, send: ToDoAction.textFieldChanged)
+                    text: viewStore.binding(
+                        get: \.name,
+                        send: ProductAction.updateName
+                    )
                 )
             }
-            .foregroundColor(viewStore.isCompleted ? .gray : nil)
+            .foregroundColor(viewStore.isInBox ? .gray : nil)
         }
     }
 }
 
-struct ToDoView_Previews: PreviewProvider {
+struct ProductView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoView(store: .mock)
+        ProductView(store: .mock)
     }
 }
