@@ -28,7 +28,7 @@ let shoppingListReducer: Reducer<ShoppingListState, ShoppingListAction, Shopping
     Reducer { state, action, env in
         switch action {
         case .addProduct:
-            state.products.insert(Product(id: UUID(), name: "", isInBox: false), at: 0)
+            state.products.insert(Product(), at: 0)
             return .none
         case .productAction:
             return .none
@@ -42,9 +42,9 @@ extension ShoppingListStore {
         ShoppingListStore(
             initialState: ShoppingListState(
                 products: [
-                    Product(id: UUID(), name: "Learn Swift", isInBox: true),
-                    Product(id: UUID(), name: "Read book"),
-                    Product(id: UUID(), name: "Visit doctor")
+                    Product(name: "Chocolate", isInBox: true),
+                    Product(name: "Milk"),
+                    Product(name: "Tea")
                 ]
             ),
             reducer: shoppingListReducer,
@@ -52,3 +52,5 @@ extension ShoppingListStore {
         )
     }
 }
+
+

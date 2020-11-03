@@ -9,9 +9,9 @@ import Foundation
 import ComposableArchitecture
 
 struct Product: Identifiable, Equatable {
-    let id: UUID
-    var name: String
-    var isInBox: Bool = false
+    var id = UUID()
+    var name = ""
+    var isInBox = false
 }
 
 enum ProductAction {
