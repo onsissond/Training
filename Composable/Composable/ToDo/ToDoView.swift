@@ -15,10 +15,20 @@ struct ToDoView: View {
         WithViewStore(store) { viewStore in
             HStack {
                 Button(action: { viewStore.send(.toggleStatus) }) {
-                    Image(systemName: viewStore.isCompleted ? "checkmark.square" : "square")
-                }.buttonStyle(PlainButtonStyle())
-                TextField("Enter todo", text: .constant(viewStore.title))
+                    Image(
+                        systemName: viewStore.isCompleted
+                            ? "checkmark.square"
+                            : "square"
+                    )
+                }
+                .buttonStyle(PlainButtonStyle())
+
+                TextField(
+                    "New item",
+                    text: viewStore.binding(get: \.title, send: ToDoAction.textFieldChanged)
+                )
             }
+            .foregroundColor(viewStore.isCompleted ? .gray : nil)
         }
     }
 }

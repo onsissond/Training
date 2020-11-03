@@ -21,9 +21,9 @@ struct ToDoListEnviroment {}
 
 let toDoListReducer: Reducer<ToDoListState, ToDoListAction, ToDoListEnviroment> = .combine(
     toDoReducer.forEach(
-    state: \.todos,
-    action: /ToDoListAction.todoAction,
-    environment: { _ in ToDoEnviroment() }
+        state: \.todos,
+        action: /ToDoListAction.todoAction,
+        environment: { _ in ToDoEnviroment() }
     ),
     Reducer { state, action, env in
         switch action {

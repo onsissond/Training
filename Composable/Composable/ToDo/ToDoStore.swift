@@ -10,12 +10,13 @@ import ComposableArchitecture
 
 struct ToDo: Identifiable, Equatable {
     let id: UUID
-    let title: String
+    var title: String
     var isCompleted: Bool = false
 }
 
 enum ToDoAction {
     case toggleStatus
+    case textFieldChanged(String)
 }
 
 struct ToDoEnviroment {}
@@ -24,6 +25,8 @@ let toDoReducer = Reducer<ToDo, ToDoAction, ToDoEnviroment> { state, action, env
     switch action {
     case .toggleStatus:
         state.isCompleted.toggle()
+    case .textFieldChanged(let newTitle):
+        state.title = newTitle
     }
     return .none
 }

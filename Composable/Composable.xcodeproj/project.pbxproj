@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		52292E93254363FD00FF03A7 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52292E92254363FD00FF03A7 /* ToDoView.swift */; };
 		52292E9B2543640700FF03A7 /* ToDoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52292E9A2543640700FF03A7 /* ToDoStore.swift */; };
-		528F4C8E253E1236004812C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F4C8D253E1236004812C7 /* ContentView.swift */; };
 		528F4C93253E1238004812C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528F4C92253E1238004812C7 /* Preview Assets.xcassets */; };
 		528F4CA1253E1238004812C7 /* ComposableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F4CA0253E1238004812C7 /* ComposableTests.swift */; };
 		528F4CAC253E1238004812C7 /* ComposableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F4CAB253E1238004812C7 /* ComposableUITests.swift */; };
@@ -43,7 +42,6 @@
 		52292E92254363FD00FF03A7 /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		52292E9A2543640700FF03A7 /* ToDoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoStore.swift; sourceTree = "<group>"; };
 		528F4C86253E1236004812C7 /* Composable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Composable.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		528F4C8D253E1236004812C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		528F4C92253E1238004812C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		528F4C95253E1238004812C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		528F4C9C253E1238004812C7 /* ComposableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComposableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +121,6 @@
 				528F4CBC253E1274004812C7 /* Resources */,
 				528F4CC0253E1274004812C7 /* ToDoList */,
 				52292E91254363E300FF03A7 /* ToDo */,
-				528F4C8D253E1236004812C7 /* ContentView.swift */,
 				528F4C94253E1238004812C7 /* LaunchScreen.storyboard */,
 				528F4C91253E1238004812C7 /* Preview Content */,
 			);
@@ -324,7 +321,6 @@
 				5292D0AE253E135C00C11CDF /* ToDoListStore.swift in Sources */,
 				528F4CC9253E1274004812C7 /* AppDelegate.swift in Sources */,
 				528F4CC8253E1274004812C7 /* ToDoListView.swift in Sources */,
-				528F4C8E253E1236004812C7 /* ContentView.swift in Sources */,
 				52292E93254363FD00FF03A7 /* ToDoView.swift in Sources */,
 				528F4CCB253E1274004812C7 /* SceneDelegate.swift in Sources */,
 			);

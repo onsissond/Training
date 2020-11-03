@@ -23,15 +23,15 @@ struct ToDoListView: View {
                         ),
                         content: ToDoView.init
                     )
-                    .listRowBackground(Color.clear)
                 }
-                .navigationTitle("My todo")
+                .navigationTitle("Shopping list")
                 .navigationBarItems(
-                    trailing: Button("Add Todo") {
+                    trailing: Button("Add item") {
                         viewStore.send(.addToDo)
                     }
                 )
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
