@@ -9,12 +9,12 @@ import Foundation
 import ComposableArchitecture
 
 struct Product: Identifiable, Equatable {
-    var id = UUID()
-    var name = ""
-    var isInBox = false
+    var id: UUID
+    var name: String
+    var isInBox: Bool
 }
 
-enum ProductAction {
+enum ProductAction: Equatable {
     case toggleStatus
     case updateName(String)
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5218F0CB2555AD89007A0962 /* ShoppingListSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218F0CA2555AD89007A0962 /* ShoppingListSystemTests.swift */; };
+		5218F0D32555B580007A0962 /* ShoppingListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218F0D22555B580007A0962 /* ShoppingListSnapshotTests.swift */; };
+		5218F0D92555B617007A0962 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 5218F0D82555B617007A0962 /* SnapshotTesting */; };
+		5218F0E22555B75E007A0962 /* testNewItem.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5218F0DF2555B75E007A0962 /* testNewItem.1.png */; };
+		5218F0E32555B75E007A0962 /* testCompleteItem.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5218F0E02555B75E007A0962 /* testCompleteItem.1.png */; };
+		5218F0E42555B75E007A0962 /* testEmptyList.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5218F0E12555B75E007A0962 /* testEmptyList.1.png */; };
 		52292E93254363FD00FF03A7 /* ShoppingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52292E92254363FD00FF03A7 /* ShoppingItemView.swift */; };
 		52292E9B2543640700FF03A7 /* ShoppingItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52292E9A2543640700FF03A7 /* ShoppingItemStore.swift */; };
 		528F4C93253E1238004812C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528F4C92253E1238004812C7 /* Preview Assets.xcassets */; };
@@ -39,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5218F0CA2555AD89007A0962 /* ShoppingListSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListSystemTests.swift; sourceTree = "<group>"; };
+		5218F0D22555B580007A0962 /* ShoppingListSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListSnapshotTests.swift; sourceTree = "<group>"; };
+		5218F0DF2555B75E007A0962 /* testNewItem.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testNewItem.1.png; sourceTree = "<group>"; };
+		5218F0E02555B75E007A0962 /* testCompleteItem.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testCompleteItem.1.png; sourceTree = "<group>"; };
+		5218F0E12555B75E007A0962 /* testEmptyList.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testEmptyList.1.png; sourceTree = "<group>"; };
 		52292E92254363FD00FF03A7 /* ShoppingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemView.swift; sourceTree = "<group>"; };
 		52292E9A2543640700FF03A7 /* ShoppingItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemStore.swift; sourceTree = "<group>"; };
 		528F4C86253E1236004812C7 /* Composable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Composable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5218F0D92555B617007A0962 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +97,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5218F0C62555ACF5007A0962 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				5218F0DD2555B75E007A0962 /* __Snapshots__ */,
+				5218F0CA2555AD89007A0962 /* ShoppingListSystemTests.swift */,
+				5218F0D22555B580007A0962 /* ShoppingListSnapshotTests.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		5218F0DD2555B75E007A0962 /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+				5218F0DE2555B75E007A0962 /* ShoppingListSnapshotTests */,
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		5218F0DE2555B75E007A0962 /* ShoppingListSnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				5218F0DF2555B75E007A0962 /* testNewItem.1.png */,
+				5218F0E02555B75E007A0962 /* testCompleteItem.1.png */,
+				5218F0E12555B75E007A0962 /* testEmptyList.1.png */,
+			);
+			path = ShoppingListSnapshotTests;
+			sourceTree = "<group>";
+		};
 		52292E91254363E300FF03A7 /* ShoppingItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +178,7 @@
 		528F4C9F253E1238004812C7 /* ComposableTests */ = {
 			isa = PBXGroup;
 			children = (
+				5218F0C62555ACF5007A0962 /* ShoppingList */,
 				528F4CA0253E1238004812C7 /* ComposableTests.swift */,
 				528F4CA2253E1238004812C7 /* Info.plist */,
 			);
@@ -218,6 +259,9 @@
 				528F4C9E253E1238004812C7 /* PBXTargetDependency */,
 			);
 			name = ComposableTests;
+			packageProductDependencies = (
+				5218F0D82555B617007A0962 /* SnapshotTesting */,
+			);
 			productName = ComposableTests;
 			productReference = 528F4C9C253E1238004812C7 /* ComposableTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -273,6 +317,7 @@
 			mainGroup = 528F4C7D253E1236004812C7;
 			packageReferences = (
 				5292D0B5253E139500C11CDF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				5218F0D72555B617007A0962 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 528F4C87253E1236004812C7 /* Products */;
 			projectDirPath = "";
@@ -300,6 +345,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5218F0E32555B75E007A0962 /* testCompleteItem.1.png in Resources */,
+				5218F0E42555B75E007A0962 /* testEmptyList.1.png in Resources */,
+				5218F0E22555B75E007A0962 /* testNewItem.1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +378,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5218F0CB2555AD89007A0962 /* ShoppingListSystemTests.swift in Sources */,
+				5218F0D32555B580007A0962 /* ShoppingListSnapshotTests.swift in Sources */,
 				528F4CA1253E1238004812C7 /* ComposableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,6 +705,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5218F0D72555B617007A0962 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
 		5292D0B5253E139500C11CDF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -666,6 +724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5218F0D82555B617007A0962 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5218F0D72555B617007A0962 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
 		5292D0B6253E139500C11CDF /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5292D0B5253E139500C11CDF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

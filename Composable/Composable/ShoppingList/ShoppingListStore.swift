@@ -8,16 +8,21 @@
 import Foundation
 import ComposableArchitecture
 
+typealias ShoppingListStore = Store<ShoppingListState, ShoppingListAction>
+
 struct ShoppingListState: Equatable {
     var products: [Product] = []
 }
 
-enum ShoppingListAction {
+enum ShoppingListAction: Equatable {
     case productAction(Int, ProductAction)
     case addProduct
+    case removeProduct(IndexSet)
 }
 
-struct ShoppingListEnviroment {}
+struct ShoppingListEnviroment {
+    var uuidGenerator: () -> UUID
+}
 
 let shoppingListReducer: Reducer<ShoppingListState, ShoppingListAction, ShoppingListEnviroment> = .combine(
     productReducer.forEach(
@@ -28,7 +33,17 @@ let shoppingListReducer: Reducer<ShoppingListState, ShoppingListAction, Shopping
     Reducer { state, action, env in
         switch action {
         case .addProduct:
-            state.products.insert(Product(), at: 0)
+            state.products.insert(
+                Product(
+                    id: env.uuidGenerator(),
+                    name: "",
+                    isInBox: false
+                ),
+                at: 0
+            )
+            return .none
+        case .removeProduct(let indexSet):
+            state.products.remove(atOffsets: indexSet)
             return .none
         case .productAction:
             return .none
@@ -36,21 +51,10 @@ let shoppingListReducer: Reducer<ShoppingListState, ShoppingListAction, Shopping
     }
 )
 
-typealias ShoppingListStore = Store<ShoppingListState, ShoppingListAction>
-extension ShoppingListStore {
-    static var mock: ShoppingListStore {
-        ShoppingListStore(
-            initialState: ShoppingListState(
-                products: [
-                    Product(name: "Chocolate", isInBox: true),
-                    Product(name: "Milk"),
-                    Product(name: "Tea")
-                ]
-            ),
-            reducer: shoppingListReducer,
-            environment: ShoppingListEnviroment()
+extension ShoppingListEnviroment {
+    static var mock: ShoppingListEnviroment {
+        ShoppingListEnviroment(
+            uuidGenerator: { fatalError("unimplemented") }
         )
     }
 }
-
-

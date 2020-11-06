@@ -20,7 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(
-                rootView: ShoppingListView(store: .mock)
+                rootView: ShoppingListView(
+                    store: ShoppingListStore(
+                        initialState: ShoppingListState(),
+                        reducer: shoppingListReducer,
+                        environment: ShoppingListEnviroment(
+                            uuidGenerator: UUID.init
+                        )
+                    )
+                )
             )
             self.window = window
             window.makeKeyAndVisible()
