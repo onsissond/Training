@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import ComposableArchitecture
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,13 +20,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
+            let keyValueStore: KeyValueStore = KeyValueStoreImpl()
             window.rootViewController = UIHostingController(
                 rootView: ShoppingListView(
                     store: ShoppingListStore(
                         initialState: ShoppingListState(),
                         reducer: shoppingListReducer,
                         environment: ShoppingListEnviroment(
-                            uuidGenerator: UUID.init
+                            uuidGenerator: UUID.init,
+                            save: {
+                                keyValueStore.set($0, forKey: "products")
+                                return .none
+                            },
+                            load: {
+                                Effect(
+                                    value: keyValueStore.value(forKey: "products") ?? []
+                                )
+                            }
                         )
                     )
                 )

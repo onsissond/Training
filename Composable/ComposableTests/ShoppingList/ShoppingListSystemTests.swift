@@ -12,24 +12,52 @@ import ComposableArchitecture
 class ShoppingListSystemTests: XCTestCase {
 
     func testAddProduct() {
+        var savedProducts: [Product] = []
+        var numberOfSaves = 0
         let store = TestStore(
-            initialState: ShoppingListState(),
+            initialState: ShoppingListState(products: []),
             reducer: shoppingListReducer,
             environment: ShoppingListEnviroment(
-                uuidGenerator: { UUID(uuidString: "00000000-0000-0000-0000-000000000000")! }
+                uuidGenerator: { .mock },
+                save: { products in Effect.fireAndForget { savedProducts = products; numberOfSaves += 1 } },
+                load: { Effect(value: [Product(id: .mock, name: "Milk", isInBox: false)]) }
             )
         )
         store.assert(
+            .send(.load),
+            .receive(.setupProducts([Product(id: .mock, name: "Milk", isInBox: false)])) {
+                $0.products = [
+                    Product(id: .mock, name: "Milk", isInBox: false)
+                ]
+            },
             .send(.addProduct) {
                 $0.products = [
-                    Product(
-                        id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!,
-                        name: "",
-                        isInBox: false
-                    )
+                    Product(id: .mock, name: "", isInBox: false),
+                    Product(id: .mock, name: "Milk", isInBox: false)
                 ]
+            },
+            .receive(.save),
+            .do {
+                XCTAssertEqual(savedProducts, [
+                    Product(id: .mock, name: "", isInBox: false),
+                    Product(id: .mock, name: "Milk", isInBox: false)
+                ])
+            },
+            .send(.productAction(0, .updateName("Banana"))) {
+                $0.products = [
+                    Product(id: .mock, name: "Banana", isInBox: false),
+                    Product(id: .mock, name: "Milk", isInBox: false)
+                ]
+            },
+            .send(.save),
+            .do {
+                XCTAssertEqual(savedProducts, [
+                    Product(id: .mock, name: "Banana", isInBox: false),
+                    Product(id: .mock, name: "Milk", isInBox: false)
+                ])
             }
         )
+        XCTAssertEqual(numberOfSaves, 2)
     }
 
     func testRemoveProduct() {

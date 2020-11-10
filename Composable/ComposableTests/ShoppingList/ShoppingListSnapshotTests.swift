@@ -14,9 +14,11 @@ class ShoppingListSnapshotTests: XCTestCase {
 
     func testEmptyList() {
         let listView = ShoppingListView(
-            store: .mock(state: ShoppingListState(
-                products: []
-            ))
+            store: ShoppingListStore(
+                initialState: ShoppingListState(products: []),
+                reducer: Reducer { _, _, _ in .none },
+                environment: ShoppingListEnviroment.mock
+            )
         )
         assertSnapshot(matching: listView, as: .image)
     }
@@ -49,7 +51,7 @@ class ShoppingListSnapshotTests: XCTestCase {
     }
 }
 
-private extension ShoppingListStore {
+extension ShoppingListStore {
     static func mock(state: ShoppingListState) -> ShoppingListStore {
         ShoppingListStore(
             initialState: state,

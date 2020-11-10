@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-struct Product: Identifiable, Equatable {
+struct Product: Identifiable, Equatable, Codable {
     var id: UUID
     var name: String
     var isInBox: Bool
@@ -17,6 +17,7 @@ struct Product: Identifiable, Equatable {
 enum ProductAction: Equatable {
     case toggleStatus
     case updateName(String)
+    case save
 }
 
 struct ProductEnviroment {}
@@ -28,6 +29,8 @@ let productReducer = Reducer<Product, ProductAction, ProductEnviroment> { state,
         return .none
     case .updateName(let newName):
         state.name = newName
+        return .none
+    case .save:
         return .none
     }
 }

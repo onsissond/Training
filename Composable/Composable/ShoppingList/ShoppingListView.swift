@@ -35,6 +35,12 @@ struct ShoppingListView: View {
                 )
             }
             .navigationViewStyle(StackNavigationViewStyle())
+            .onAppear(perform: {
+                viewStore.send(.load)
+            })
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
@@ -51,7 +57,15 @@ struct ShoppingListView_Previews: PreviewProvider {
             ),
             reducer: shoppingListReducer,
             environment: ShoppingListEnviroment(
-                uuidGenerator: UUID.init
+                uuidGenerator: UUID.init,
+                save: { _ in .none },
+                load: {
+                    Effect(value: [
+                        Product(id: UUID(), name: "Chocolate", isInBox: true),
+                        Product(id: UUID(), name: "Milk", isInBox: false),
+                        Product(id: UUID(), name: "Tea", isInBox: false)
+                    ])
+                }
             )
         ))
     }

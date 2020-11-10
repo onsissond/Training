@@ -27,7 +27,8 @@ struct ProductView: View {
                     text: viewStore.binding(
                         get: \.name,
                         send: ProductAction.updateName
-                    )
+                    ),
+                    onEditingChanged:  { if !$0 { viewStore.send(.save) } }
                 )
             }
             .foregroundColor(viewStore.isInBox ? .gray : nil)
